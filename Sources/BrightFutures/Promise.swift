@@ -32,10 +32,13 @@ public final class Promise<T, E: Error> {
 
     /// The future that will complete through this promise
     public let future: Future<T, E>
+
+    public let name: String
     
     /// Creates a new promise with a pending future
-    public init() {
+    public init(name: String = "default") {
         self.future = Future<T, E>()
+        self.name = name
     }
     
     /// Completes the promise's future with the given future
@@ -81,5 +84,8 @@ public final class Promise<T, E: Error> {
     public func tryComplete(_ result: Result<T,E>) -> Bool {
         return future.tryComplete(result)
     }
-    
+
+    deinit {
+        print("deinit promise\(self) + \(self.name)")
+    }
 }
