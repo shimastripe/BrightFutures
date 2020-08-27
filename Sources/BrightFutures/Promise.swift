@@ -86,6 +86,6 @@ public final class Promise<T, E: Error> {
     }
 
     deinit {
-        print("deinit promise\(self) + \(self.name)")
+        NSLog("deinit promise\(self) + \(self.name)")
     }
 }
