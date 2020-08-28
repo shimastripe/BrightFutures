@@ -73,7 +73,10 @@ public final class Future<T, E: Error>: Async<Result<T, E>> {
     public required init(resolver: (_ result: @escaping (Value) -> Void) -> Void) {
         super.init(resolver: resolver)
     }
-    
+
+    deinit {
+        NSLog("deinit BrightFutures future:\(self.name)")
+    }
 }
 
 public func materialize<T, E>(_ scope: ((T?, E?) -> Void) -> Void) -> Future<T, E> {
