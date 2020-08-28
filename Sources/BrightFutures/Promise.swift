@@ -37,7 +37,7 @@ public final class Promise<T, E: Error> {
     
     /// Creates a new promise with a pending future
     public init(name: String = "default") {
-        self.future = Future<T, E>()
+        self.future = Future<T, E>(name: name)
         self.name = name
     }
     
@@ -86,6 +86,6 @@ public final class Promise<T, E: Error> {
     }
 
     deinit {
-        NSLog("deinit promise\(self) + \(self.name)")
+        NSLog("deinit BrightFutures promise:\(self.name)")
     }
 }

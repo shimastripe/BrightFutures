@@ -35,11 +35,17 @@ public final class Future<T, E: Error>: Async<Result<T, E>> {
     public typealias CompletionCallback = (_ result: Result<T,E>) -> Void
     public typealias SuccessCallback = (T) -> Void
     public typealias FailureCallback = (E) -> Void
+    public var name = "default"
     
     public required init() {
         super.init()
     }
     
+    public required init(name: String) {
+        super.init()
+        self.name = name
+    }
+
     public required init(result: Future.Value) {
         super.init(result: result)
     }
